@@ -1,0 +1,12 @@
+[mcp_servers.laravel-boost]
+command = "php"
+args = ["artisan", "boost:mcp"]
+cwd = "C:\\Users\\jewgienij.brzozowski\\Herd\\idea"
+
+[mcp_servers.herd]
+command = "php"
+args = ["C:/Users/jewgienij.brzozowski/.config/herd/bin/herd-mcp.phar"]
+cwd = "C:\\Users\\jewgienij.brzozowski\\Herd\\idea"
+
+[mcp_servers.herd.env]
+SITE_PATH = "C:\\Users\\jewgienij.brzozowski\\Herd\\idea"

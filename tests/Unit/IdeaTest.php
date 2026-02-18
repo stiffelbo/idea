@@ -31,6 +31,6 @@ test('it can have many steps', function () {
 test('it casts links and status attributes', function () {
     $idea = Idea::factory()->create();
 
-    expect($idea->links)->toBeInstanceOf(\ArrayObject::class)
+    expect($idea->links)->toBeInstanceOf(ArrayObject::class)
         ->and($idea->status)->toBe(IdeaStatus::PENDING);
 });

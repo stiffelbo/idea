@@ -12,5 +12,10 @@
     {{ $slot }}
 </main>
 
+@session('success')
+    <x-toast>
+        {{$value}}
+    </x-toast>
+@endsession
 </body>
 </html>

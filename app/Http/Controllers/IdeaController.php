@@ -6,17 +6,36 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
+use App\IdeaStatus;
 use App\Models\Idea;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): void
+    public function index(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $status = $request->string('status')->toString();
+
+        $status = IdeaStatus::tryFrom($status)?->value;
+
+        $ideas = $user->ideas()
+            ->when($status, fn ($query) => $query->where('status', $status))
+            ->latest()
+            ->get();
+
+        return view('idea.index', [
+            'ideas' => $ideas,
+            'statusCounts' => Idea::statusCounts($user),
+            'activeStatus' => $status,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

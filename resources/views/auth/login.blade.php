@@ -25,7 +25,7 @@
                     required
                 />
 
-                <button type="submit" class="btn w-full h-10">
+                <button type="submit" class="btn w-full h-10" data-test="signin">
                     Sign in
                 </button>
             </form>

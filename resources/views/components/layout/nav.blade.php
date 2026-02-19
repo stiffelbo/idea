@@ -25,7 +25,7 @@
 
                 <form method="POST" action="{{route('logout')}}">
                     @csrf
-                    <button type="submit" class="btn btn-outlined border-error text-error">
+                    <button type="submit" class="btn btn-outlined border-error text-error" data-test="logout">
                         Logout
                     </button>
                 </form>

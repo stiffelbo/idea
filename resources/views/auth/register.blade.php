@@ -34,7 +34,7 @@
                     required
                 />
 
-                <button type="submit" class="btn w-full h-10">
+                <button type="submit" id="submit" class="btn w-full h-10" data-test="submit">
                     Create account
                 </button>
             </form>

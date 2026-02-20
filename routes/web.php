@@ -13,8 +13,8 @@ Route::get('/login', [SessionsController::class, 'create'])->name('login');
 Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth')->name('logout');
 
-//Ideas
-Route::get('/ideas', [IdeaController::class, 'index'])->middleware('auth')->name('idea');
+// Ideas
+Route::get('/ideas', [IdeaController::class, 'index'])->middleware('auth')->name('idea.index');
 Route::get('/ideas/create', [IdeaController::class, 'create'])->middleware('auth')->name('idea.create');
 Route::post('/ideas', [IdeaController::class, 'store'])->middleware('auth')->name('idea.store');
 Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->middleware('auth')->name('idea.show');

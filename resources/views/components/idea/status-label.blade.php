@@ -1,20 +1,23 @@
-@props(
-    ['status' => 'pending']
-)
+@props([
+    'status' => 'pending',
+    'clickable' => false,
+])
 
 @php
-    $classes = "inline-block rounded-full border px-2 py-1 text-xs font-medium";
-    if($status === 'pending'){
-        $classes .= ' bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
-    }
-    if($status === 'in_progress'){
-        $classes .= ' bg-blue-500/10 text-blue-500 border-blue-500/20';
-    }
-    if($status === 'completed'){
-        $classes .= ' bg-emerald-500/10 text-emerald-500 border-emerald-500/20';
-    }
+    $base = 'inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium transition select-none';
+    $interactive = $clickable ? 'cursor-pointer' : '';
+
+    $variant = match ($status) {
+        'pending' => 'border-yellow-500/25 text-yellow-500 bg-yellow-500/10',
+        'in_progress' => 'border-blue-500/25 text-blue-500 bg-blue-500/10',
+        'completed' => 'border-emerald-500/25 text-emerald-500 bg-emerald-500/10',
+        default => 'border-border text-foreground',
+    };
 @endphp
 
-<span {{ $attributes(['class' => $classes]) }}>
-    {{$slot}}
-</span>
+<button
+    type="button"
+    {{ $attributes->class([$base, $variant, $interactive]) }}
+>
+    {{ $slot }}
+</button>
